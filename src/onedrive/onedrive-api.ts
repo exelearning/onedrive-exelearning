@@ -434,13 +434,18 @@ function _maybeExtractPermissionsHints(
 }
 
 export function buildItemUrl(ref: DriveItemRef): URL {
+  const isRoot = ref.itemId === 'root';
   if (ref.driveId) {
     return new URL(
-      `${GRAPH_BASE}/drives/${encodeURIComponent(ref.driveId)}/items/${encodeURIComponent(ref.itemId)}`,
+      isRoot
+        ? `${GRAPH_BASE}/drives/${encodeURIComponent(ref.driveId)}/root`
+        : `${GRAPH_BASE}/drives/${encodeURIComponent(ref.driveId)}/items/${encodeURIComponent(ref.itemId)}`,
     );
   }
   return new URL(
-    `${GRAPH_BASE}/me/drive/items/${encodeURIComponent(ref.itemId)}`,
+    isRoot
+      ? `${GRAPH_BASE}/me/drive/root`
+      : `${GRAPH_BASE}/me/drive/items/${encodeURIComponent(ref.itemId)}`,
   );
 }
 
