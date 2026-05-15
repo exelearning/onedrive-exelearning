@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Signing in to Microsoft OneDrive…</title>
+    <meta name="robots" content="noindex" />
+    <style>
+      body {
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        padding: 2rem;
+        color: #1f2933;
+        background: #f3f4f6;
+      }
+      main {
+        max-width: 28rem;
+        margin: 4rem auto;
+        background: #ffffff;
+        border: 1px solid #d9e2ec;
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Signing you in…</h1>
+      <p>You can close this window if it does not close automatically.</p>
+    </main>
+    <script>
+      (function () {
+        try {
+          var search = window.location.search || '';
+          var hash = window.location.hash || '';
+          // Microsoft identity platform returns the code/state in the query
+          // string for response_mode=query (popup) or response_mode=fragment
+          // (hidden iframe). Read both so the same callback page works for
+          // both flows.
+          var query = search.startsWith('?') ? search.slice(1) : search;
+          var fragment = hash.startsWith('#') ? hash.slice(1) : hash;
+          var payload = { source: 'onedrive-exelearning-auth', query: query, fragment: fragment };
+          if (window.opener) {
+            window.opener.postMessage(payload, window.location.origin);
+            window.close();
+          } else if (window.parent && window.parent !== window) {
+            window.parent.postMessage(payload, window.location.origin);
+          }
+        } catch (error) {
+          document.body.textContent =
+            'Authentication callback failed: ' + (error && error.message ? error.message : error);
+        }
+      })();
+    </script>
+  </body>
+</html>
