@@ -2,18 +2,18 @@ import { requestAccessToken } from '../auth/msal-token-client';
 import { ELPX_MIME_TYPE } from '../config';
 import { EditorFrame } from '../editor/editor-frame';
 import {
+  createDriveItem,
   type DriveItem,
   type DriveItemRef,
   getDriveItemPermissions,
 } from '../onedrive/onedrive-api';
-import { createDriveItem } from '../onedrive/onedrive-api';
 import { fetchEditableDriveFile } from '../onedrive/onedrive-download';
 import type { OpenedDriveFileSnapshot } from '../onedrive/onedrive-state';
 import { publishElpxThumbnail } from '../onedrive/onedrive-thumbnail';
 import { saveDriveFile } from '../onedrive/onedrive-upload';
 import {
-  SavingModal,
   confirmOverwriteRemoteChange,
+  SavingModal,
   showError,
 } from '../ui/dialogs';
 import {
@@ -22,7 +22,7 @@ import {
   requiredElement,
   setEditorTitle,
 } from '../ui/editor-shell';
-import { StatusView, formatError } from '../ui/status';
+import { formatError, StatusView } from '../ui/status';
 
 export interface EditorModeContext {
   ref: DriveItemRef;

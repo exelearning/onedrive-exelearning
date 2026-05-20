@@ -2,7 +2,7 @@ import { requestAccessToken } from '../auth/msal-token-client';
 import { createPackageIframe } from '../elpx/iframe-renderer';
 import { validatePackage } from '../elpx/package-validator';
 import { ViewerSession } from '../elpx/viewer-session';
-import { ZipReadError, readPackage } from '../elpx/zip-reader';
+import { readPackage, ZipReadError } from '../elpx/zip-reader';
 import {
   type DriveItemRef,
   getDriveItemPermissions,
@@ -10,8 +10,8 @@ import {
 import { fetchEditableDriveFile } from '../onedrive/onedrive-download';
 import { publishElpxThumbnailFromEntries } from '../onedrive/onedrive-thumbnail';
 import {
-  type RuntimeWorker,
   ensureRuntimeWorker,
+  type RuntimeWorker,
   registerSession,
   unregisterSession,
 } from '../sw/service-worker-client';
@@ -20,7 +20,7 @@ import {
   requiredElement,
   setEditorTitle,
 } from '../ui/editor-shell';
-import { StatusView, formatError } from '../ui/status';
+import { formatError, StatusView } from '../ui/status';
 import {
   renderErrorCard,
   renderLegacyCard,

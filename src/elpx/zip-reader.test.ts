@@ -2,9 +2,9 @@ import { zipSync } from 'fflate';
 import { describe, expect, it } from 'vitest';
 import {
   DEFAULT_LIMITS,
-  ZipReadError,
   looksLikeZip,
   readPackage,
+  ZipReadError,
 } from './zip-reader';
 
 function buildZip(entries: Record<string, Uint8Array>): ArrayBuffer {

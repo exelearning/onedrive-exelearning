@@ -1,17 +1,17 @@
 import { ELPX_MIME_TYPE } from '../config';
 import {
+  createDriveItem,
+  createUploadSession,
   type DriveItem,
   type DriveItemRef,
   GraphApiError,
-  createDriveItem,
-  createUploadSession,
+  getDriveItem,
   putItemContent,
   uploadInUploadSession,
 } from './onedrive-api';
-import { getDriveItem } from './onedrive-api';
 import {
-  type OpenedDriveFileSnapshot,
   hasRemoteRevisionChanged,
+  type OpenedDriveFileSnapshot,
 } from './onedrive-state';
 
 export type SaveConflictResolution = 'overwrite' | 'copy' | 'cancel';
