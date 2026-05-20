@@ -2,8 +2,8 @@ import { requestAccessToken } from '../auth/msal-token-client';
 import { BLANK_TEMPLATE_PATH, ELPX_MIME_TYPE } from '../config';
 import { EditorFrame } from '../editor/editor-frame';
 import {
-  type DriveItemRef,
   createDriveItem,
+  type DriveItemRef,
   listDriveChildren,
 } from '../onedrive/onedrive-api';
 import {
@@ -13,14 +13,14 @@ import {
 } from '../onedrive/onedrive-state';
 import { publishElpxThumbnail } from '../onedrive/onedrive-thumbnail';
 import { saveDriveFile } from '../onedrive/onedrive-upload';
-import { SavingModal, confirmOverwriteRemoteChange } from '../ui/dialogs';
+import { confirmOverwriteRemoteChange, SavingModal } from '../ui/dialogs';
 import {
   closeEditor,
   renderEditorPage,
   requiredElement,
   setEditorTitle,
 } from '../ui/editor-shell';
-import { StatusView, formatError } from '../ui/status';
+import { formatError, StatusView } from '../ui/status';
 
 export async function renderCreate(root: HTMLElement): Promise<void> {
   const params = new URLSearchParams(window.location.search);

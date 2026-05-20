@@ -19,8 +19,8 @@
 
 import {
   AUTH_CALLBACK_PATH,
-  MS_SCOPE,
   authorityBaseUrl,
+  MS_SCOPE,
   requireMsClientId,
 } from '../config';
 import { createPkcePair, randomState } from './pkce';

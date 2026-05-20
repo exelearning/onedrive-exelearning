@@ -4,10 +4,10 @@ import {
 } from './editor-boot';
 import {
   type EditorMessage,
-  type OpenFileRequestData,
-  type SaveFileResponse,
   isEditorMessage,
   normalizeBytes,
+  type OpenFileRequestData,
+  type SaveFileResponse,
 } from './editor-messages';
 import { resetEditorLocalStorage } from './editor-storage';
 

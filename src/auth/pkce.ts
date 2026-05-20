@@ -58,7 +58,7 @@ export function randomState(byteLength = 16): string {
   return Array.from(buffer, b => b.toString(16).padStart(2, '0')).join('');
 }
 
-function cryptoGetRandomValues(buffer: Uint8Array): void {
+function cryptoGetRandomValues(buffer: Uint8Array<ArrayBuffer>): void {
   const cryptoApi =
     typeof globalThis.crypto !== 'undefined' ? globalThis.crypto : undefined;
   if (cryptoApi && typeof cryptoApi.getRandomValues === 'function') {
